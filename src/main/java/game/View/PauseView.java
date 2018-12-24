@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+@game.Engine.Annotation.GameView
 public class PauseView extends GameView {
     private GameMap map;
     private ImageView mapIv;
@@ -22,6 +23,8 @@ public class PauseView extends GameView {
 
     public PauseView() {
         root = new Pane();
+        Game.getInstance().resetMedia();
+
         map = Game.getInstance().getMapManager().getCurrentMap();
         mapIv = new ImageView(map.getMapImage());
         mapIv.setFitWidth(Game.getInstance().getWidth());
@@ -29,7 +32,7 @@ public class PauseView extends GameView {
 
         nameLbl = new Label("CrazyAlpha!");
         nameLbl.setTextFill(Color.WHITESMOKE);
-        nameLbl.setFont(Game.getInstance().getResouceManager().getFont("Paranoid", 120));
+        nameLbl.setFont(Game.getInstance().getResouceManager().getFont("Starcraft", 120));
         nameLbl.setLayoutX(50);
         nameLbl.setLayoutY(50);
 
@@ -50,21 +53,38 @@ public class PauseView extends GameView {
         resumeBtn.setLayoutX(map.getWidth() - resumeBtn.getFitWidth() - 20);
         resumeBtn.setLayoutY(map.getHeight() - resumeBtn.getFitHeight() - exitBtn.getFitHeight() - 120);
         resumeBtn.setEffect(reflection02);
-        EventHandler<MouseEvent> mouseEventEventHandler = event -> resumeBtn.setEffect(new Glow(0.8));
-        resumeBtn.setOnMouseEntered(mouseEventEventHandler);
-        resumeBtn.setOnMouseExited(event -> resumeBtn.setEffect(reflection02));
+        resumeBtn.setOnMouseEntered(event -> {
+            resumeBtn.setEffect(new Glow(0.8));
+            Game.getInstance().getButtonOverMusic().play();
+        });
+        resumeBtn.setOnMouseExited(event -> {
+            resumeBtn.setEffect(reflection02);
+            Game.getInstance().getButtonClickMusic().stop();
+        });
         resumeBtn.setOnMousePressed(event -> {
             resumeBtn.setEffect(new GaussianBlur());
+            Game.getInstance().getButtonClickMusic().play();
             Game.getInstance().resume();
         });
-        resumeBtn.setOnMouseReleased(mouseEventEventHandler);
+        resumeBtn.setOnMouseReleased(event -> {
+            resumeBtn.setEffect(new Glow(0.8));
+        });
 
         exitBtn.setLayoutX(map.getWidth() - exitBtn.getFitWidth() - 20);
         exitBtn.setLayoutY(map.getHeight() - exitBtn.getFitHeight() - 60);
         exitBtn.setEffect(reflection02);
-        exitBtn.setOnMouseEntered(event -> exitBtn.setEffect(new Glow(0.8)));
-        exitBtn.setOnMouseExited(event -> exitBtn.setEffect(reflection02));
-        exitBtn.setOnMousePressed(event -> exitBtn.setEffect(new GaussianBlur()));
+        exitBtn.setOnMouseEntered(event -> {
+            exitBtn.setEffect(new Glow(0.8));
+            Game.getInstance().getButtonOverMusic().play();
+        });
+        exitBtn.setOnMouseExited(event -> {
+            exitBtn.setEffect(reflection02);
+            Game.getInstance().getButtonOverMusic().stop();
+        });
+        exitBtn.setOnMousePressed(event -> {
+            exitBtn.setEffect(new GaussianBlur());
+            Game.getInstance().getButtonClickMusic().play();
+        });
         exitBtn.setOnMouseReleased(event -> {
             exitBtn.setEffect(new Glow(0.8));
             Game.getInstance().exit();

@@ -25,7 +25,7 @@ public class Generator extends GameObject {
             return;
 
         // 判断是否达到最大限制
-        if (getAnimationAlphaCount()>=maxAlphaCount)
+        if (getAnimationAlphaCount() >= maxAlphaCount)
             return;
 
         ScoreIndicator scoreIndicator = ((ScoreIndicator) Game.getInstance().getModelManager().get("ScoreIndicator"));
@@ -65,6 +65,7 @@ public class Generator extends GameObject {
 
     /**
      * 获取当前正在屏幕上运动的字母数量
+     *
      * @return 数量
      */
     private int getAnimationAlphaCount() {
@@ -76,5 +77,18 @@ public class Generator extends GameObject {
             }
         }
         return result;
+    }
+
+    /**
+     * 重置字母生成器
+     */
+    public void reset() {
+        lastTime = 0;
+        interval = 1000;
+        currentAlphaCount = 0;
+        for (BaseModel model : Game.getInstance().getModelManager().getAllModels()) {
+            if (model instanceof Alpha)
+                ((Alpha) model).stop(false);
+        }
     }
 }

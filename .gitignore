@@ -1,3 +1,7 @@
+# ignore .data file
+*.data
+
+# ignore idea files
 .idea
 out
 resources

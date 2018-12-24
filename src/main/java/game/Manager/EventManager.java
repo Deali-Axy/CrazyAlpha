@@ -20,7 +20,8 @@ public class EventManager {
      */
     public void register(EventHandler eventHandler, EventType eventType) {
         handlers.put(eventType, eventHandler);
-        Game.getInstance().getScene().addEventHandler(eventType, eventHandler);
+        // 先不用绑定事件，等 refresh 的时候再绑定事件
+        // Game.getInstance().getScene().addEventHandler(eventType, eventHandler);
     }
 
     /**

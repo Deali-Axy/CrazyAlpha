@@ -25,13 +25,13 @@ public class ResouceManager {
     private HashMap<String, String> fonts = new HashMap<>();
     private HashMap<String, String> images = new HashMap<>();
     private HashMap<String, String> controls = new HashMap<>();
-    private HashMap<String, String> music = new HashMap<>();
+    private HashMap<String, String> media = new HashMap<>();
 
     public ResouceManager() {
         loadResources("fonts", fonts);
         loadResources("images", images);
         loadResources("controls", controls);
-        loadResources("music", music);
+        loadResources("media", media);
     }
 
     private void loadResources(String resourceType, HashMap<String, String> container) {
@@ -129,11 +129,16 @@ public class ResouceManager {
         }
     }
 
-    public Media getMusic(String musicName) {
-        if (music.containsKey(musicName)) {
-            String musicPath = music.get(musicName);
+    public Media getMedia(String musicName) {
+        if (media.containsKey(musicName)) {
+            String relativePath = media.get(musicName);
 //            InputStream stream=getClass().getClassLoader().getResourceAsStream(musicPath);
-            return new Media("file:" + musicPath);
+            URL musicRes = getClass().getClassLoader().getResource(relativePath);
+            if (musicRes == null) {
+                logger.error("cannot get media resource {}", relativePath);
+                return null;
+            }
+            return new Media("file:" + musicRes.getPath());
         } else
             return null;
     }

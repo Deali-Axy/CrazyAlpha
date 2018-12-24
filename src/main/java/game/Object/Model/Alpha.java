@@ -13,6 +13,7 @@ public class Alpha extends TextModel {
     private Logger logger = LogManager.getLogger(Alpha.class);
 
     private int maxFontSize = 100;
+    private String fontName = "BAHAMASN";
 
     public Alpha(String text) {
         this.text = text;
@@ -63,7 +64,7 @@ public class Alpha extends TextModel {
     }
 
     public void setFontSize(double size) {
-        font = Game.getInstance().getResouceManager().getFont("Starcraft", size);
+        font = Game.getInstance().getResouceManager().getFont(fontName, size);
     }
 
     /**
@@ -120,7 +121,7 @@ public class Alpha extends TextModel {
         this.status = ObjectStatus.INVISIBLE;
 
         if (isMiss)
-            ((MissIndicator) Game.getInstance().getModelManager().get("MissIndicator")).miss();
+            ((HPIndicator) Game.getInstance().getModelManager().get("HPIndicator")).miss();
     }
 
     public int getMaxFontSize() {

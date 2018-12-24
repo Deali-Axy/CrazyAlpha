@@ -15,13 +15,12 @@ public class Main extends Application {
 
     private Game gameObject;
     private Render render;
-    private Generator generator;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         gameObject = Game.getInstance();
         render = gameObject.getRender();
-        generator = new Generator();
+        gameObject.setGenerator(new Generator());
 
         // 设置大小
         gameObject.setWidth(1440);
@@ -33,16 +32,20 @@ public class Main extends Application {
         // 进入主界面
         gameObject.home();
         // 注册模型
-        gameObject.getModelManager().register(new ScoreIndicator());
-        gameObject.getModelManager().register(new MissIndicator());
         gameObject.getModelManager().register(new Avatar());
-        gameObject.getModelManager().register(new DebugInfo());
         gameObject.getModelManager().register(new CenterArc());
+        gameObject.getModelManager().register(new DebugInfo());
+        gameObject.getModelManager().register(new HPGadget());
+        gameObject.getModelManager().register(new HPIndicator());
+        gameObject.getModelManager().register(new LevelGadget());
+        gameObject.getModelManager().register(new LevelIndicator());
+        gameObject.getModelManager().register(new ScoreGadget());
+        gameObject.getModelManager().register(new ScoreIndicator());
         // 注册事件
         gameObject.getEventManager().register(new KeyEventHandler(), KeyEvent.ANY);
 
         // 启动字母生成器
-        generator.start();
+        gameObject.getGenerator().start();
 
         gameObject.setAnimationTimer(new AnimationTimer() {
             long time = System.currentTimeMillis();
@@ -61,7 +64,7 @@ public class Main extends Application {
                     model.update();
                 }
                 gameObject.getMapManager().getCurrentMap().update();
-                generator.update();
+                gameObject.getGenerator().update();
                 render.update();
                 time = System.currentTimeMillis();
             }

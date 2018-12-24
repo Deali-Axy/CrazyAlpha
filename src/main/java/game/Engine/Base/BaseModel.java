@@ -49,7 +49,6 @@ public abstract class BaseModel extends GameObject {
      */
     protected double verticalAcceleration = 0;
 
-
     @Override
     public String toString() {
         return String.format("width=%f height=%f x=%f y=%f", width, height, x, y);

@@ -1,12 +1,10 @@
 package game;
 
 import game.Engine.Enum.GameStatus;
-import game.Manager.EventManager;
-import game.Manager.MapManager;
-import game.Manager.ModelManager;
-import game.Manager.ResouceManager;
+import game.Manager.*;
+import game.Object.Generator;
 import game.Object.Model.DebugInfo;
-import game.Object.Model.MissIndicator;
+import game.Object.Model.HPIndicator;
 import game.Object.Model.ScoreIndicator;
 import game.View.HomeView;
 import game.View.OverView;
@@ -14,14 +12,9 @@ import game.View.PauseView;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.media.MediaPlayer;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class Game {
     private static Game instance;
@@ -34,9 +27,16 @@ public class Game {
     private MapManager mapManager = new MapManager();
     private ModelManager modelManager = new ModelManager();
     private ResouceManager resouceManager = new ResouceManager();
+    private DataManager dataManager = new DataManager();
     private Render render = new Render();
-    private Runnable backgroundMusic;
-    private MediaPlayer mediaPlayer;
+
+    private Generator generator;
+
+    private MediaPlayer backgroundMusic;
+    private MediaPlayer buttonOverMusic;
+    private MediaPlayer buttonClickMusic;
+    private MediaPlayer hintMusic;
+    private MediaPlayer missMusic;
 
     private GameStatus status = GameStatus.STOP;
     private int score;  // 上次游戏得分
@@ -48,23 +48,14 @@ public class Game {
     private Scene gameScene;
 
     private Game() {
-        // todo 背景音乐
-        backgroundMusic = () -> {
-            logger.info("backgroundMusic define");
-            try {
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("resources/music/all-your-heart.mp3"));
-                logger.info("backgroundMusic buffer");
-                Player player = new Player(bufferedInputStream);
-                logger.info("backgroundMusic create player");
-//                player.play();
-                logger.info("backgroundMusic play");
-            } catch (FileNotFoundException | JavaLayerException ex) {
-                logger.error(ex.getMessage());
-            }
-        };
-
-//        mediaPlayer = new MediaPlayer(resouceManager.getMusic("all-your-heart"));
-//        mediaPlayer.play();
+        backgroundMusic = new MediaPlayer(resouceManager.getMedia("background"));
+        backgroundMusic.setVolume(0.5);
+        backgroundMusic.setAutoPlay(true);
+        backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
+        buttonOverMusic = new MediaPlayer(resouceManager.getMedia("button_over"));
+        buttonClickMusic = new MediaPlayer(resouceManager.getMedia("button_click"));
+        hintMusic = new MediaPlayer(resouceManager.getMedia("hint"));
+        missMusic = new MediaPlayer(resouceManager.getMedia("error2"));
     }
 
     public static Game getInstance() {
@@ -73,6 +64,12 @@ public class Game {
         return instance;
     }
 
+    /**
+     * 输出调试信息
+     *
+     * @param template 　字符串
+     * @param args     　参数
+     */
     public void debug(String template, Object... args) {
         String text = "";
         for (Object object : args) {
@@ -82,6 +79,14 @@ public class Game {
         if (debugInfo == null)
             return;
         debugInfo.setText(text);
+    }
+
+    /**
+     * 重置所有和界面效果有关的音效
+     */
+    public void resetMedia() {
+        buttonClickMusic.stop();
+        buttonOverMusic.stop();
     }
 
     public void pause() {
@@ -119,14 +124,14 @@ public class Game {
         render.init(new HomeView());
     }
 
-    // todo 还要重置字母生成器呢！
     public void over() {
         if (status != GameStatus.OVER) {
             // 保存分数
             score = ((ScoreIndicator) modelManager.get("ScoreIndicator")).getScore();
             // 重置分数
             ((ScoreIndicator) modelManager.get("ScoreIndicator")).reset();
-            ((MissIndicator) modelManager.get("MissIndicator")).reset();
+            ((HPIndicator) modelManager.get("HPIndicator")).reset();
+            generator.reset();
             setStatus(GameStatus.OVER);
             mapManager.next();
             render.init(new OverView());
@@ -134,7 +139,21 @@ public class Game {
     }
 
     public void exit() {
-        System.exit(0);
+        new AnimationTimer() {
+            long time = System.currentTimeMillis();
+
+            @Override
+            public void handle(long l) {
+                if (System.currentTimeMillis() - time < 550) {
+                    try {
+                        Thread.sleep(10);
+                    } catch (Exception ex) {
+                        logger.error(ex.getMessage());
+                    }
+                } else
+                    System.exit(0);
+            }
+        }.start();
     }
 
     public ResouceManager getResouceManager() {
@@ -210,5 +229,41 @@ public class Game {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    public MediaPlayer getBackgroundMusic() {
+        return backgroundMusic;
+    }
+
+    public MediaPlayer getButtonOverMusic() {
+        return buttonOverMusic;
+    }
+
+    public MediaPlayer getHintMusic() {
+        return hintMusic;
+    }
+
+    public MediaPlayer getMissMusic() {
+        return missMusic;
+    }
+
+    public MediaPlayer getButtonClickMusic() {
+        return buttonClickMusic;
+    }
+
+    public Generator getGenerator() {
+        return generator;
+    }
+
+    public void setGenerator(Generator generator) {
+        this.generator = generator;
+    }
+
+    public DataManager getDataManager() {
+        return dataManager;
+    }
+
+    public void setDataManager(DataManager dataManager) {
+        this.dataManager = dataManager;
     }
 }

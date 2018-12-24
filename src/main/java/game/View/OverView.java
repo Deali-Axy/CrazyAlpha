@@ -11,10 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+@game.Engine.Annotation.GameView
 public class OverView extends GameView {
 
     public OverView() {
         root = new Pane();
+        Game.getInstance().resetMedia();
+
         GameMap map = Game.getInstance().getMapManager().getCurrentMap();
         ImageView mapIv = new ImageView(map.getMapImage());
         mapIv.setFitWidth(Game.getInstance().getWidth());
@@ -26,11 +29,18 @@ public class OverView extends GameView {
         nameLbl.setLayoutX(50);
         nameLbl.setLayoutY(50);
 
-        Label scoreLbl = new Label("Score: " + Game.getInstance().getScore());
+
+        Label scoreLbl = new Label();
         scoreLbl.setTextFill(Color.WHITESMOKE);
         scoreLbl.setFont(Game.getInstance().getResouceManager().getFont("Starcraft", 60));
         scoreLbl.setLayoutX(50);
         scoreLbl.setLayoutY(map.getHeight() - scoreLbl.getHeight() - 140);
+        if (Game.getInstance().getScore() > Game.getInstance().getDataManager().getHighestScore()) {
+            // 刷新高分记录！
+            scoreLbl.setText("New Record: " + Game.getInstance().getScore());
+            Game.getInstance().getDataManager().setHighestScore(Game.getInstance().getScore());
+        } else
+            scoreLbl.setText("Score: " + Game.getInstance().getScore());
 
         Reflection reflection = new Reflection();
         reflection.setFraction(1.0);
@@ -43,9 +53,18 @@ public class OverView extends GameView {
         homeBtn.setLayoutX(map.getWidth() - homeBtn.getFitWidth() - 20);
         homeBtn.setLayoutY(map.getHeight() - homeBtn.getFitHeight() - 60);
         homeBtn.setEffect(reflection);
-        homeBtn.setOnMouseEntered(event -> homeBtn.setEffect(new Glow(0.8)));
-        homeBtn.setOnMouseExited(event -> homeBtn.setEffect(reflection));
-        homeBtn.setOnMousePressed(event -> homeBtn.setEffect(new GaussianBlur()));
+        homeBtn.setOnMouseEntered(event -> {
+            homeBtn.setEffect(new Glow(0.8));
+            Game.getInstance().getButtonOverMusic().play();
+        });
+        homeBtn.setOnMouseExited(event -> {
+            homeBtn.setEffect(reflection);
+            Game.getInstance().getButtonOverMusic().stop();
+        });
+        homeBtn.setOnMousePressed(event -> {
+            homeBtn.setEffect(new GaussianBlur());
+            Game.getInstance().getButtonClickMusic().play();
+        });
         homeBtn.setOnMouseReleased(event -> {
             homeBtn.setEffect(new Glow(0.8));
             Game.getInstance().home();

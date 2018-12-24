@@ -36,7 +36,7 @@ public class MapManager {
     public GameMap next() {
         if (currentIndex > mapList.values().size() - 1)
             currentIndex = 0;
-        currentMap = mapList.values().toArray(new GameMap[0])[currentIndex++];
+        currentMap = mapList.values().toArray(new GameMap[0])[++currentIndex];
         return currentMap;
     }
 
@@ -46,7 +46,8 @@ public class MapManager {
      * @return 地图
      */
     public GameMap random() {
-        currentMap = mapList.values().toArray(new GameMap[0])[RandomEx.nextInt(mapList.size())];
+        currentIndex = RandomEx.nextInt(mapList.size());
+        currentMap = mapList.values().toArray(new GameMap[0])[currentIndex];
         return currentMap;
     }
 

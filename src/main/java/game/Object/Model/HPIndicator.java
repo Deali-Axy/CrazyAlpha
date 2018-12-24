@@ -4,11 +4,11 @@ import game.Engine.Base.TextModel;
 import game.Game;
 import javafx.scene.paint.Color;
 
-public class MissIndicator extends TextModel {
+public class HPIndicator extends TextModel {
     private int miss;
     private int maxHP = 10;
 
-    public MissIndicator() {
+    public HPIndicator() {
         font = Game.getInstance().getResouceManager().getFont("Starcraft", 30);
 
         fillColor = Color.WHITE;

@@ -1,10 +1,12 @@
 package game.Engine.Base;
 
+import game.Engine.Annotation.GameModel;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 
+@GameModel
 public abstract class ShapeModel extends BaseModel {
     protected Color fillColor;
     protected Color strokeColor;

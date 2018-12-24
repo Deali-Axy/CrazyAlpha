@@ -1,15 +1,15 @@
 package game.Engine.Base;
 
 import game.Engine.Annotation.GameModel;
-import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 @GameModel
 public abstract class TextModel extends BaseModel {
 
     protected Font font;
-    protected Color fillColor;
-    protected Color strokeColor;
+    protected Paint fillColor;
+    protected Paint strokeColor;
     protected String text;
 
     public String getText() {
@@ -28,19 +28,19 @@ public abstract class TextModel extends BaseModel {
         this.font = font;
     }
 
-    public Color getFillColor() {
+    public Paint getFillColor() {
         return fillColor;
     }
 
-    public void setFillColor(Color fillColor) {
+    public void setFillColor(Paint fillColor) {
         this.fillColor = fillColor;
     }
 
-    public Color getStrokeColor() {
+    public Paint getStrokeColor() {
         return strokeColor;
     }
 
-    public void setStrokeColor(Color strokeColor) {
+    public void setStrokeColor(Paint strokeColor) {
         this.strokeColor = strokeColor;
     }
 

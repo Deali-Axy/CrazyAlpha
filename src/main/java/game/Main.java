@@ -6,6 +6,7 @@ import game.Object.Generator;
 import game.Object.Model.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -26,8 +27,9 @@ public class Main extends Application {
         gameObject.setWidth(1440);
         gameObject.setHeight(900);
         // 加载地图
-        for (String s : gameObject.getResouceManager().getAllMaps()) {
-            gameObject.getMapManager().load(s);
+        Image[] maps = gameObject.getResouceManager().getAllMapsImage();
+        for (int i = 0; i < maps.length; i++) {
+            gameObject.getMapManager().load(maps[i], String.valueOf(i+1));
         }
         // 进入主界面
         gameObject.home();

@@ -10,6 +10,10 @@ public class PathEx {
         return fullName.substring(0, fullName.lastIndexOf("."));
     }
 
+    public static String getFileName(String fullName) {
+        return fullName.substring(0, fullName.lastIndexOf("."));
+    }
+
     public static String getExtName(Path path) {
         File file = new File(path.toString());
         String fullName = file.getName();

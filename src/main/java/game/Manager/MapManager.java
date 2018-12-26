@@ -3,6 +3,7 @@ package game.Manager;
 import game.Engine.Annotation.GameManager;
 import game.Engine.Utils.RandomEx;
 import game.Object.GameMap;
+import javafx.scene.image.Image;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -67,4 +68,9 @@ public class MapManager {
         return currentMap;
     }
 
+    public GameMap load(Image mapImage, String mapName) {
+        this.currentMap = new GameMap(mapImage);
+        this.mapList.put(mapName, currentMap);
+        return currentMap;
+    }
 }

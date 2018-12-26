@@ -9,6 +9,7 @@ import game.Object.Model.ScoreIndicator;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+@game.Engine.Annotation.GameObject
 public class Generator extends GameObject {
     private long lastTime = 0;
     private long interval = 1000;  // 发射字母的时间间隔

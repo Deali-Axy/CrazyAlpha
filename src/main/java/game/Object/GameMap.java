@@ -50,6 +50,14 @@ public class GameMap extends GameObject {
         }
     }
 
+    public GameMap(Image mapImage) {
+        mapImageView = new ImageView(mapImage);
+        width = Game.getInstance().getWidth();
+        height = Game.getInstance().getHeight();
+        mapImageView.setFitWidth(width + horizontalOffset * 3);
+        mapImageView.setFitHeight(height + verticalOffset * 3);
+    }
+
     @Override
     public void update() {
         if (status != ObjectStatus.ANIMATION)

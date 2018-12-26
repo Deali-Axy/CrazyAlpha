@@ -5,6 +5,8 @@ Learn more on my WeChat Official Account：DealiAxy
 
 Every post was in my blog：[blog.deali.cn](http://blog.deali.cn)
 
+-----------
+[了解项目详情请点击](https://www.jianshu.com/p/2da7cfba1cbe)
 
 ## Features
 1. 基于JavaFX设计了游戏引擎XEngine
@@ -14,6 +16,13 @@ Every post was in my blog：[blog.deali.cn](http://blog.deali.cn)
 5. MVVM分层设计，代码解耦合，模块高内聚
 6. Model模型系统设计，模块化设计
 7. 使用订阅者模式实现的消息系统和事件处理
+
+## 下载运行
+首先，[下载最新版本](https://github.com/Deali-Axy/CrazyAlpha/releases)
+然后双击jar包运行，或者
+```bash
+java -jar crazyalpha.jar
+```
 
 
 ## 架构

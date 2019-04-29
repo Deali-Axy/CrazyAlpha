@@ -1,9 +1,12 @@
-## About
-![](https://upload-images.jianshu.io/upload_images/8869373-901590e019f6f85b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+# Crazy Alpha
+[English Version](https://github.com/Deali-Axy/CrazyAlpha/blob/master/README.md)
 
-Learn more on my WeChat Official Account：DealiAxy
-
-Every post was in my blog：[blog.deali.cn](http://blog.deali.cn)
+## 欢迎与我交流
+- 打代码直播间：[https://live.bilibili.com/11883038](https://live.bilibili.com/11883038)
+- 微信公众号：DealiAxy
+- 知乎：[https://www.zhihu.com/people/dealiaxy](https://www.zhihu.com/people/dealiaxy)
+- 博客：[https://blog.deali.cn](https://blog.deali.cn)
+- 简书：[https://www.jianshu.com/u/965b95853b9f](https://www.jianshu.com/u/965b95853b9f)
 
 -----------
 [了解项目详情请点击](https://www.jianshu.com/p/2da7cfba1cbe)

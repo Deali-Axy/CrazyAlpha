@@ -77,7 +77,7 @@ the bottom left corner shows the highest score,
 and the following is the author information and version. 
 In the lower right corner are two buttons, 
 one to launch the game button and the other to exit the button. 
-![](https://upload-images.jianshu.io/upload_images/8869373-fbde64fc99f06c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://github.com/Deali-Axy/CrazyAlpha/raw/master/Screenshot/8869373-fbde64fc99f06c85.png)
 
 ### The main game interface:
 The top left corner is the player's avatar, 
@@ -86,15 +86,15 @@ directly above is the current level;
 the center of the picture is the big windmill, 
 the big windmill emits letters following the music rhythm, 
 the player needs to press the corresponding letter before the letters fly out of the screen to score. 
-![](https://upload-images.jianshu.io/upload_images/8869373-2ffef771e37c67c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://github.com/Deali-Axy/CrazyAlpha/raw/master/Screenshot/8869373-2ffef771e37c67c3.png)
 
 ### Game pause screen
-![image.png](https://upload-images.jianshu.io/upload_images/8869373-c90595ad9ef2f8f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://github.com/Deali-Axy/CrazyAlpha/raw/master/Screenshot/8869373-c90595ad9ef2f8f5.png)
 
 ### Game over screen
 The bottom left shows the game scores and whether to break the highest score. 
 The return to the main interface button is displayed in the lower right corner. 
-![](https://upload-images.jianshu.io/upload_images/8869373-bfabf0608d28e3eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://github.com/Deali-Axy/CrazyAlpha/raw/master/Screenshot/8869373-bfabf0608d28e3eb.png)
 
 
 ## Development experience

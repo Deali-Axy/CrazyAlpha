@@ -12,7 +12,7 @@ WeChat Official Account | WeChat Official Account |
 - Email: deali@live.com
 - Blog Site: [https://blog.deali.cn](https://blog.deali.cn)
 - Zhihu community: [https://www.zhihu.com/people/dealiaxy](https://www.zhihu.com/people/dealiaxy)
-- Jianshu community: [https://www.jianshu.com/u/965b95853b9f](https://www.jianshu.com/u/965b95853b9f)
+- CNBlog：[https://www.cnblogs.com/deali/](https://www.cnblogs.com/deali/}
 
 -----------
 For details of the project, please [click](https://www.jianshu.com/p/2da7cfba1cbe)

@@ -9,9 +9,9 @@
 ## 欢迎与我交流
 - 打代码直播间：[https://live.bilibili.com/11883038](https://live.bilibili.com/11883038)
 - 微信公众号：DealiAxy
+- 邮箱：admin@deali.cn
 - 知乎：[https://www.zhihu.com/people/dealiaxy](https://www.zhihu.com/people/dealiaxy)
-- 博客：[https://blog.deali.cn](https://blog.deali.cn)
-- 简书：[https://www.jianshu.com/u/965b95853b9f](https://www.jianshu.com/u/965b95853b9f)
+- 博客园：[https://www.cnblogs.com/deali/](https://www.cnblogs.com/deali/)
 
 -----------
 [了解项目详情请点击](https://www.jianshu.com/p/2da7cfba1cbe)

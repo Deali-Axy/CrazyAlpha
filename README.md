@@ -9,10 +9,9 @@ WeChat Official Account | WeChat Official Account |
 ## Welcome to communicate with me
 - coding live room: [https://live.bilibili.com/11883038](https://live.bilibili.com/11883038)
 - WeChat official account: DealiAxy
-- Email: deali@live.com
-- Blog Site: [https://blog.deali.cn](https://blog.deali.cn)
+- Email: admin@deali.cn
 - Zhihu community: [https://www.zhihu.com/people/dealiaxy](https://www.zhihu.com/people/dealiaxy)
-- CNBlog：[https://www.cnblogs.com/deali/](https://www.cnblogs.com/deali/}
+- CNBlog：[https://www.cnblogs.com/deali/](https://www.cnblogs.com/deali/)
 
 -----------
 For details of the project, please [click](https://www.jianshu.com/p/2da7cfba1cbe)

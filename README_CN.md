@@ -1,4 +1,9 @@
 # Crazy Alpha
+
+公众号 | 公众号 |
+------- | ------ | 
+![](https://gitee.com/deali/CodeZone/raw/master/images/coding_lab_logo.jpg) | ![](https://gitee.com/deali/CodeZone/raw/master/images/coding_lab_qr_code.jpg)   |
+
 [English Version](https://github.com/Deali-Axy/CrazyAlpha/blob/master/README.md)
 
 ## 欢迎与我交流

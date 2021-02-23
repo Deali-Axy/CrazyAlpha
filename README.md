@@ -1,5 +1,10 @@
 # Crazy Alpha
 
+WeChat Official Account | WeChat Official Account |
+------- | ------ | 
+![](https://gitee.com/deali/CodeZone/raw/master/images/coding_lab_logo.jpg) | ![](https://gitee.com/deali/CodeZone/raw/master/images/coding_lab_qr_code.jpg)   |
+
+
 [中文版文档](https://github.com/Deali-Axy/CrazyAlpha/blob/master/README_CN.md)
 ## Welcome to communicate with me
 - coding live room: [https://live.bilibili.com/11883038](https://live.bilibili.com/11883038)
